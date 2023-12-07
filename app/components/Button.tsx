@@ -3,13 +3,13 @@
 import { IconType } from "react-icons";
 
 interface Props {
-  label: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  outline?: boolean;
-  disabled?: boolean;
+  label: string; //content button
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; //function when click button
+  outline?: boolean; //type button
+  disabled?: boolean; // button disable
 
-  small?: boolean;
-  icon?: IconType;
+  small?: boolean; //type button
+  icon?: IconType; // icon for the button
 }
 
 export default function Button({
