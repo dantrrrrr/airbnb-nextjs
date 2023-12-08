@@ -1,6 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import Navbar from "./components/navbar/Navbar";
+import Modal from "./components/modal/Modal";
+import RegisterModal from "./components/modal/RegisterModal";
+import { Toaster } from "react-hot-toast";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -16,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Toaster position="top-center" />
+        <RegisterModal />
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

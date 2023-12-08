@@ -50,7 +50,7 @@ export default function Modal({
       return;
     }
 
-    onSubmit();
+    onSubmit(); //function onSubmit =>handleSubmit(onSubmit)
   }, [disabled, onSubmit]);
 
   const handleSecondaryAction = useCallback(() => {
@@ -74,14 +74,14 @@ export default function Modal({
                       relative 
                       w-full 
                       md:w-4/6 
-                      lg:w-3/6 
-                      xl:w-2/5 
+                      lg:w-2/6
+                      xl:w-2/6 
                       my-6 
                       mx-auto 
                       h-full 
-                      lg:h-auto 
-                      md:h-auto
-                    
+                      lg:h-3/4 
+                      md:h-3/4
+                      
                       "
         >
           {/* Content */}
@@ -99,7 +99,7 @@ export default function Modal({
             {/* this is contain all main content */}
             <div
               className="translate h-full lg:h-auto md:h-auto
-              border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none
+              border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none 
             "
             >
               {/* Header */}
@@ -115,11 +115,12 @@ export default function Modal({
                 <div className="text-lg font-semibold">{title}</div>
               </div>
               {/* body */}
-
+              {/* where the input get data here */}
               <div className="relative p-6 flex-auto">{body}</div>
               {/* footer */}
 
               <div className="flex flex-col gap-2 p-6">
+                {/* button primary */}
                 <div className="flex flex-row items-center  gap-4 w-full">
                   {secondaryAction && secondaryActionLabel && (
                     <Button
@@ -135,6 +136,7 @@ export default function Modal({
                     onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
