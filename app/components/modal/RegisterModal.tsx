@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
-import useRegisterModal from "@/app/hooks/userRegisterModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../input/Input";
@@ -30,8 +30,8 @@ export default function RegisterModal() {
     try {
       const res = await axios.post("/api/register", data);
 
-      console.log(data);
-
+      // console.log(data);
+      toast.success("Create account successfully");
       registerModal.onClose();
     } catch (error) {
       toast.error("Something went wrong !");
@@ -48,6 +48,7 @@ export default function RegisterModal() {
       <Heading title="Welcome to AirBnb" subtitle="create an account !" />
       <Input
         id="email"
+        type="email"
         label="Email"
         disabled={isLoading}
         register={register}
