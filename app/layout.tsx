@@ -6,6 +6,7 @@ import Modal from "./components/modal/Modal";
 import RegisterModal from "./components/modal/RegisterModal";
 import { Toaster } from "react-hot-toast";
 import LoginModal from "./components/modal/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -14,18 +15,19 @@ export const metadata: Metadata = {
   description: "DanTruong clone next app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={font.className}>
         <Toaster position="top-center" />
         <RegisterModal />
         <LoginModal />
-        <Navbar />
+        <Navbar currentUser={currentUser}/>
         {children}
       </body>
     </html>
