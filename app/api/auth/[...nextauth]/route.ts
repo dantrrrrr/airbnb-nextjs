@@ -62,4 +62,7 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRECT,
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
+
+// All requests to /api/auth/* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js.
