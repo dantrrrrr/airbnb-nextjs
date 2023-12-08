@@ -1,3 +1,5 @@
+//handle open and close modal
+
 import { create } from "zustand";
 //type
 interface RegisterModalStore {
