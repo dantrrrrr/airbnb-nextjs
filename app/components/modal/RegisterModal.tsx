@@ -12,10 +12,15 @@ import Input from "../input/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal(); //state manager
-
+  const loginModal = useLoginModal(); //state manager
+  const toggleModal = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -34,6 +39,7 @@ export default function RegisterModal() {
       // console.log(data);
       toast.success("Create account successfully");
       registerModal.onClose();
+      loginModal.onOpen();
     } catch (error) {
       toast.error("Something went wrong !");
       console.log(
@@ -100,7 +106,7 @@ export default function RegisterModal() {
           cursor-pointer
           hover:underline
           "
-            onClick={registerModal.onClose}
+            onClick={toggleModal}
           >
             Login
           </div>

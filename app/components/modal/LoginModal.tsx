@@ -14,12 +14,17 @@ import Button from "../Button";
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 export default function LoginModal() {
   const loginModal = useLoginModal(); //state manager
+  const registerModal = useRegisterModal(); //state manager
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
+  const toggleModal = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
   const {
     handleSubmit,
     register,
@@ -86,16 +91,16 @@ export default function LoginModal() {
       />
       <div className="text-neutral-500 text-center mt-4  font-light">
         <div className="justify-center flex flex-row items-center gap-3 ">
-          <div className="">Already have an account ?</div>
+          <div className="">First time using Airbnb ?</div>
           <div
             className="
           text-neutral-800
           cursor-pointer
           hover:underline
           "
-            onClick={loginModal.onClose}
+            onClick={toggleModal}
           >
-            Login
+            Create an account
           </div>
         </div>
       </div>
