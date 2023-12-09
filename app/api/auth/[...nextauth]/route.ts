@@ -9,6 +9,11 @@ import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
+  //save oauth data to database
+
+  ///This will enable NextAuth.js to store the user profile information
+  //from the OAuth providers in a MongoDB collection called users and link to the account collection
+
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -54,6 +59,7 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
+  callbacks: {},
   pages: {
     signIn: "/", //redirect here when error happend
   },
