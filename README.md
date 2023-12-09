@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+When a user logs in with GitHub using NextAuth.js, the following data is typically stored:
 
-## Getting Started
+**User Collection:**
 
-First, run the development server:
+- `id`: A unique identifier for the user.
+- `name`: The name of the user as it appears on GitHub.
+- `email`: The email address associated with the user's GitHub account.
+- `image`: The URL of the user's profile picture on GitHub.
+- `emailVerified`: The date and time when the user's email was verified. This might be `null` if the email hasn't been verified.
+- `hashedPassword`: This field is typically used for local authentication strategies (i.e., username and password). For OAuth providers like GitHub, this field is usually `null` because the authentication is handled by GitHub, and the password is not shared with your application.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Account Collection:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `id`: A unique identifier for the account.
+- `provider`: The name of the provider (in this case, 'github').
+- `type`: The type of account (for GitHub, this would be 'oauth').
+- `providerAccountId`: The ID assigned to the user by GitHub.
+- `refresh_token`: The refresh token for OAuth (this is used to get a new access token when the current one expires).
+- `access_token`: The access token for OAuth (this is used to make authenticated requests to the GitHub API).
+- `expires_at`: The expiration timestamp for the tokens.
+- `userId`: The ID of the user in the `User` collection that this account is linked to.
