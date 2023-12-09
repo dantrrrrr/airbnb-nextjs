@@ -6,6 +6,7 @@ import Search from "./Search";
 import UserMenu from "./UserMenu";
 
 import { SafeUser } from "@/app/types";
+import Category from "./Category";
 
 interface Props {
   currentUser?: SafeUser | null;
@@ -23,6 +24,7 @@ export default function Navbar({ currentUser }: Props) {
           </div>
         </Container>
       </div>
+      <Category />
     </div>
   );
 }
