@@ -21,7 +21,13 @@ export default async function getCurrentUser() {
     if (!currentUser) {
       return null;
     }
-    return currentUser;
+    const { hashedPassword, ...others } = currentUser;
+    return {
+      ...others,
+      createdAt: others.createdAt?.toISOString(),
+      updatedAt: others.updatedAt?.toISOString(),
+      emailVerified: others.emailVerified?.toISOString() || null,
+    };
   } catch (error) {
     console.log(
       "🚀 ~ file: getCurrentUser.ts:13 ~ getCurrentUser ~ error:",
