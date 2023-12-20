@@ -11,6 +11,7 @@ import { categories } from "./categories.data";
 import { usePathname, useSearchParams } from "next/navigation";
 type Props = {};
 export default function Category({}: Props) {
+  
   const params = useSearchParams();
   const category = params?.get("category");
   const pathName = usePathname();
